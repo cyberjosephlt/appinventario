@@ -35,6 +35,9 @@ public class Entidad {
     @Column(length=20, nullable=false)
     private String telefono;
 
+    @Column(length=20, nullable=false)
+    private String tipoEntidad;
+
     @Column(length=45, nullable=false)
     private String email;
 
