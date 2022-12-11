@@ -2,6 +2,7 @@ package com.unab.edu.co.grupo69.appinventario.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -51,9 +52,22 @@ public class Usuario {
     @Column(length=25, nullable=false)
     private String documento;
 
-    @ManyToOne
+    @Column(length=15, nullable=false)
+    private String nickname;
+
+    @Column(length=25, nullable=false)
+    private String password;
+
+   /*  @ManyToOne
     @JoinColumn(name = "idEntidad")
+    private Entidad entidad;*/
+
+    @JoinColumn(name = "idEntidad", insertable = false, updatable = false)
+    @ManyToOne(targetEntity = Entidad.class, fetch = FetchType.EAGER)
     private Entidad entidad;
+
+    
+    private String idEntidad;
 
     @Override
     public String toString() {

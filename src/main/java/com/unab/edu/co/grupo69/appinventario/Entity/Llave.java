@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -39,9 +40,15 @@ public class Llave {
     @Column( nullable=false)
     private Date fechav;
 
-    @ManyToOne
+   /* @ManyToOne
     @JoinColumn(name = "idUsuario")
+    private Usuario usuario;*/
+
+    @JoinColumn(name = "idusuario", insertable = false, updatable = false)
+    @ManyToOne(targetEntity = Usuario.class, fetch = FetchType.EAGER)
     private Usuario usuario;
+
+    private String idEntidad;
 
     @Override
     public String toString() {

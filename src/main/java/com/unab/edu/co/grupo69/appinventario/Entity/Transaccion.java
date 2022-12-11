@@ -2,6 +2,7 @@ package com.unab.edu.co.grupo69.appinventario.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -39,13 +40,26 @@ public class Transaccion {
     @Column(length=300, nullable=false)
     private String documentoSoporte;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
+    private Usuario usuario;*/
 
-    @ManyToOne
+    @JoinColumn(name = "idUsuario", insertable = false, updatable = false)
+    @ManyToOne(targetEntity = Usuario.class, fetch = FetchType.EAGER)
+    private Producto usuario;
+
+    private String idUsuario;
+
+    /*@ManyToOne
     @JoinColumn(name = "idProducto")
+    private Producto producto;*/
+
+    @JoinColumn(name = "idProducto", insertable = false, updatable = false)
+    @ManyToOne(targetEntity = Producto.class, fetch = FetchType.EAGER)
     private Producto producto;
+
+    private String idProducto;
+
 
     @Override
     public String toString() {
