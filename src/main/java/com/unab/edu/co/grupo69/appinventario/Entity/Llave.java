@@ -43,6 +43,12 @@ public class Llave {
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
+    @Override
+    public String toString() {
+        return "Llave [idLlave=" + idLlave + ", token=" + token + ", fechac=" + fechac + ", fechav=" + fechav
+                + ", usuario=" + usuario + "]";
+    }
+
 
 
     

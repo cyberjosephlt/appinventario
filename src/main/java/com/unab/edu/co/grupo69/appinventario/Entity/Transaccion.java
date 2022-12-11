@@ -46,5 +46,13 @@ public class Transaccion {
     @ManyToOne
     @JoinColumn(name = "idProducto")
     private Producto producto;
+
+    @Override
+    public String toString() {
+        return "Transaccion [idTransaccion=" + idTransaccion + ", tipoTransaccion=" + tipoTransaccion + ", cantidad="
+                + cantidad + ", documentoSoporte=" + documentoSoporte + ", usuario=" + usuario + ", producto="
+                + producto + "]";
+    }
+    
     
 }

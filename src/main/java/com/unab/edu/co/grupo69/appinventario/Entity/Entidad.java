@@ -50,4 +50,11 @@ public class Entidad {
     @Column(length=20, nullable=false)
     private String ciudad;
 
+    @Override
+    public String toString() {
+        return "Entidad [idEntidad=" + idEntidad + ", razonSocial=" + razonSocial + "]";
+    }
+
+    
+
 }

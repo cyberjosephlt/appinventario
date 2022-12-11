@@ -28,7 +28,7 @@ public class TransaccionController {
 
         try {
 
-            if(transaccion.getProducto()==null){
+            if(transaccion.getTipoTransaccion()==null){
                 return new ResponseEntity<Message>(new Message(400,"Todos los campos son obligatorios"), HttpStatus.BAD_REQUEST);
             } else{
                 transaccionservice.save(transaccion);
@@ -68,7 +68,7 @@ public class TransaccionController {
 
         try {
 
-            if(transaccion.getProducto()==null){
+            if(transaccion.getTipoTransaccion()==null){
                 return new ResponseEntity<Message>(new Message(400,"El campo nombre es obligatorio"), HttpStatus.BAD_REQUEST);
             } else{
                 Message message=transaccionservice.update(transaccion);

@@ -55,5 +55,11 @@ public class Usuario {
     @JoinColumn(name = "idEntidad")
     private Entidad entidad;
 
+    @Override
+    public String toString() {
+        return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", tipoUsuario="
+                + tipoUsuario + "]";
+    }
+
 
 }
