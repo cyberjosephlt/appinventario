@@ -32,13 +32,14 @@ public class UsuarioController {
             if(usuario.getNombre()==null){
                 return new ResponseEntity<Message>(new Message(400,"El campo nombre es obligatorio"), HttpStatus.BAD_REQUEST);
             } else{
+                usuario.setPassword(Encriptar.sha1(usuario.getPassword()));
                 usuarioservice.save(usuario);
                 return new ResponseEntity<Message>(new Message(200,"Registro creado"), HttpStatus.CREATED);
             }
             
         } catch (Exception e) {
             // TODO: handle exception
-            return new ResponseEntity<Message>(new Message(400,"El registro no se creó"),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<Message>(new Message(400,"El registro no se creó: "+e.getMessage()),HttpStatus.BAD_REQUEST);
         }
     }
     
@@ -72,6 +73,7 @@ public class UsuarioController {
             if(usuario.getNombre()==null){
                 return new ResponseEntity<Message>(new Message(400,"El campo nombre es obligatorio"), HttpStatus.BAD_REQUEST);
             } else{
+                usuario.setPassword(Encriptar.sha1(usuario.getPassword()));
                 Message message=usuarioservice.update(usuario);
                 return new ResponseEntity<Message>(new Message(message.getStatus(),message.getMessage()), HttpStatus.valueOf(message.getStatus()));
             }

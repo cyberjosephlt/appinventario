@@ -55,7 +55,7 @@ public class Usuario {
     @Column(length=15, nullable=false)
     private String nickname;
 
-    @Column(length=25, nullable=false)
+    @Column(nullable=false)
     private String password;
 
    /*  @ManyToOne
@@ -65,9 +65,6 @@ public class Usuario {
     @JoinColumn(name = "idEntidad", insertable = false, updatable = false)
     @ManyToOne(targetEntity = Entidad.class, fetch = FetchType.EAGER)
     private Entidad entidad;
-
-    
-    private String idEntidad;
 
     @Override
     public String toString() {
