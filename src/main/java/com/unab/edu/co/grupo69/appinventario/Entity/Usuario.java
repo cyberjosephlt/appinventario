@@ -65,7 +65,8 @@ public class Usuario {
     @JoinColumn(name = "idEntidad", insertable = false, updatable = false)
     @ManyToOne(targetEntity = Entidad.class, fetch = FetchType.EAGER)
     private Entidad entidad;
-
+    private String idEntidad;
+    
     @Override
     public String toString() {
         return "Usuario [idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", tipoUsuario="
