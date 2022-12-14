@@ -54,12 +54,9 @@ public class Transaccion {
     @JoinColumn(name = "idProducto")
     private Producto producto;*/
 
-    @JoinColumn(name = "idProducto", insertable = false, updatable = false)
-    @ManyToOne(targetEntity = Producto.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idProducto")
+    @ManyToOne
     private Producto producto;
-
-    private String idProducto;
-
 
     @Override
     public String toString() {

@@ -43,12 +43,9 @@ public class Llave {
    /* @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;*/
-
-    @JoinColumn(name = "idusuario", insertable = false, updatable = false)
-    @ManyToOne(targetEntity = Usuario.class, fetch = FetchType.EAGER)
+    @ManyToOne
+    @JoinColumn(name = "idusuario")
     private Usuario usuario;
-
-    private String idEntidad;
 
     @Override
     public String toString() {

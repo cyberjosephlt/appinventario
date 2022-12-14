@@ -73,7 +73,7 @@ public class UsuarioController {
             if(usuario.getNombre()==null){
                 return new ResponseEntity<Message>(new Message(400,"El campo nombre es obligatorio"), HttpStatus.BAD_REQUEST);
             } else{
-                usuario.setPassword(Encriptar.sha1(usuario.getPassword()));
+               // usuario.setPassword(Encriptar.sha1(usuario.getPassword()));
                 Message message=usuarioservice.update(usuario);
                 return new ResponseEntity<Message>(new Message(message.getStatus(),message.getMessage()), HttpStatus.valueOf(message.getStatus()));
             }

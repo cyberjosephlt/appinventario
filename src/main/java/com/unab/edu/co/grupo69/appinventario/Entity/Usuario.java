@@ -62,10 +62,10 @@ public class Usuario {
     @JoinColumn(name = "idEntidad")
     private Entidad entidad;*/
 
-    @JoinColumn(name = "idEntidad", insertable = false, updatable = false)
-    @ManyToOne(targetEntity = Entidad.class, fetch = FetchType.EAGER)
+    @ManyToOne
+    @JoinColumn(name = "idEntidad")
     private Entidad entidad;
-    private String idEntidad;
+
     
     @Override
     public String toString() {
