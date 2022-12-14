@@ -1,4 +1,5 @@
 package com.unab.edu.co.grupo69.appinventario.Controller;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.unab.edu.co.grupo69.Dto.UsuarioDto;
+import com.unab.edu.co.grupo69.Utility.ConvertEntity;
 import com.unab.edu.co.grupo69.appinventario.Entity.Message;
 import com.unab.edu.co.grupo69.appinventario.Entity.Usuario;
 import com.unab.edu.co.grupo69.appinventario.Security.Encriptar;
@@ -24,6 +27,8 @@ public class UsuarioController {
 
     @Autowired
     UsuarioService usuarioservice;
+
+    ConvertEntity convertentity= new ConvertEntity();
     @PostMapping("/create")
     public ResponseEntity<Message> save(@RequestBody Usuario usuario){
 
@@ -51,13 +56,20 @@ public class UsuarioController {
 
     }
 
+    
     @GetMapping("/listar")
-
-    public List<Usuario> findAll(){
-
-            return (List<Usuario>) usuarioservice.findAll();
-        
+    public ResponseEntity<List<UsuarioDto>> findAll() {
+        List<Usuario> usuarios =usuarioservice.findAll();
+        List<UsuarioDto> usuarioDto = new ArrayList<>();
+        for (Usuario usuario : usuarios) {
+            UsuarioDto usuariodto = new UsuarioDto();
+            usuarioDto.add((UsuarioDto) convertentity.convert(usuario, usuariodto ));
+            
+        }
+        return  new ResponseEntity<>(usuarioDto,HttpStatus.OK);
     }
+    
+
     @GetMapping("/encriptar/{dato}")
     public String encriptar(@PathVariable String dato){
         return Encriptar.sha1(dato);
